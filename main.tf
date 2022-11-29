@@ -1,7 +1,7 @@
 provider "google" {
-  credentials = file("servce-key.json")
+  credentials = file(local.service-key)
 
-  project = "iunang-xccelerated-cicd"
-  region  = "europe-west4"
-  zone    = "europe-west4-a"
+  project = local.defaults.project
+  region  = local.defaults.region
+  zone    = local.defaults.zone
 }

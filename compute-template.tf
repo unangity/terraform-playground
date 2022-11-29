@@ -36,8 +36,8 @@ resource "google_compute_region_instance_group_manager" "paas_group_manager" {
   region   = each.key
 
   named_port {
-    name = "alt-http"
-    port = 8080
+    name = local.port.name
+    port = local.port.number
   }
 
   auto_healing_policies {
@@ -47,6 +47,6 @@ resource "google_compute_region_instance_group_manager" "paas_group_manager" {
 }
 
 moved {
-  to   = google_compute_region_instance_group_manager.paas_group_manager["europe-west4"]
+  to   = google_compute_region_instance_group_manager.paas_group_manager[local.defaults.region]
   from = google_compute_region_instance_group_manager.paas_group_manager
 }

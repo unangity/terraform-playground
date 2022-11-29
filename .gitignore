@@ -1,3 +1,4 @@
 servce-key.json
 *terraform*
 cloud-init.yaml
+locals.tf

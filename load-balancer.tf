@@ -22,7 +22,7 @@ resource "google_compute_url_map" "paas-monitor" {
 resource "google_compute_backend_service" "paas-monitor" {
   name             = "paas-monitor-backend"
   protocol         = "HTTP"
-  port_name        = "alt-http"
+  port_name        = local.port.name
   timeout_sec      = 10
   session_affinity = "NONE"
 

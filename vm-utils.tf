@@ -7,21 +7,21 @@ resource "google_compute_health_check" "health_checker" {
   unhealthy_threshold = 10
 
   http_health_check {
-    port         = "8080"
+    port         = local.port.number
     request_path = "/health"
     response     = "ok"
   }
 }
 
 resource "google_compute_firewall" "default_allow_alt_http" {
-  name    = "default-allow-alt-http"
+  name    = "default-allow-${local.port.name}"
   network = "default"
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "8080"]
+    ports    = ["80", local.port.number]
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["alt-http-server"]
+  target_tags   = ["${local.port.name}-server"]
 }
