@@ -47,6 +47,6 @@ resource "google_compute_region_instance_group_manager" "paas_group_manager" {
 }
 
 moved {
-  to   = google_compute_region_instance_group_manager.paas_group_manager[local.defaults.region]
+  to   = google_compute_region_instance_group_manager.paas_group_manager["europe-west4"]
   from = google_compute_region_instance_group_manager.paas_group_manager
 }

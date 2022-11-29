@@ -3,9 +3,9 @@ resource "google_compute_global_address" "paas-monitor" {
 }
 
 resource "google_compute_global_forwarding_rule" "paas-monitor" {
-  name       = "paas-monitor-port-8080"
+  name       = "paas-monitor-port-${local.port.number}"
   ip_address = google_compute_global_address.paas-monitor.address
-  port_range = "8080"
+  port_range = local.port.number
   target     = google_compute_target_http_proxy.paas-monitor.self_link
 }
 

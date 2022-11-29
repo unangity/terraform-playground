@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file(local.service-key)
+  credentials = file(local.servicekey-file)
 
   project = local.defaults.project
   region  = local.defaults.region
